@@ -17,7 +17,7 @@ repolon = {
 	'ął': 'oł',
 	r'([ea])u': r'\1ł',
 	
-	r'ci(\b|[^eaouęą])': r'ći\1',
+	r'ci(\b|[^eaouęą])': r'ći\1',      # ć, ś, dź i ź w różnych sytuacjach
 	r'ci([^e])': r'ć\1',
 	r'ci': r'ć',
 	
@@ -60,30 +60,30 @@ repolon = {
 
 
 
-angl = {
+angl = {            # niedobitki ch
 	'ch': 'kh',
-	r'([fk])i(e)': r'\1\2',
-	r'\bnie\b': 'ne',
+	r'([fk])i(e)': r'\1\2',     # bez palatalizacji po nich
+	r'\bnie\b': 'ne',         # ogół spółgłosek
 	r'w': 'v',
 	'ś': 'sz',
 	'ź': 'ż',
 	'ć': 'cz',
-	'dź': 'dż',
+	'dź': 'dż',      
 	r's([^z]|\b)': r'ss\1',
 	r'([^cs]|\b)z': r'\1s',
-	r'(\b)cz': r'\1ch',     # to do
+	r'(\b)cz': r'\1ch',     # szeleszczące 
 	'cz': 'tch',
 	'sz': 'sh',
 	'dż': 'J',
 	r'([^bvzg]|\b)ż': r'\1zsh',
 	'ż': 'sh',
-	r'c([^h]|\b)': r'ts\1',
+	r'c([^h]|\b)': r'ts\1',         
 	                             # 'a' 'i' 'e' samotne 
 	r'a([^jłr]|\b)': r'ah\1',
 	r'([^ji])e([^j]|\b)': r'\1eh\2',
 	r'eh\b': 'ehh',
 	r'\bi\b': r'e', 
-	
+	                        # ogół samogłosek
 	r'y': 'I',                     # igrek na razie pod placeholderem takim
 	r'(\w{2,})iej': r'\1 yay',
 	r'(\w{2,})[ij]e': r'\1 yeah',     # końcówka -ie zależnie od sylabowości
@@ -91,7 +91,8 @@ angl = {
 	r'(\w+)je(\w+)': r'\1yeh\2',
 	r'(\w{1})ie': r'\1ieh',
 	r'i([^eao]|\b)': r'EE\1',   # EE by ominąć zmiany na małych e
-	r'ej\b': 'ei',
+	                       
+	r'ej\b': 'ei',           # dyftongi
 	r'ej\B': 'ay',   
 	r'EE': 'ee',        # i powrót ee
 	r'I': 'ih',                    # igrek wraca
@@ -103,12 +104,13 @@ angl = {
 	r'(\w+)(\w{1})aj(\w+)': r'\1 \2igh\3',
 	r'(\w+)(\w{1})aj': r'\1 \2ie',	
 	r'aj': ' i',
+	
 	r'a\b': 'ah',      # wstawiam a tam gdzie się mogło zgubić przy rozdzielaniu na np 'yeah'
 	'j': 'y',
 	r'J': 'j',
-	r'o([^whym]|\b)': r'aw\1',
+	r'o([^whym]|\b)': r'aw\1',       
 	r'u': 'oo',
-	r'g([ei])': r'gh\1'
+	r'g([ei])': r'gh\1'        # g != dż
 }
 
 
