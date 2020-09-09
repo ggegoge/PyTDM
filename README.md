@@ -9,7 +9,7 @@ If you want your programme to _talk_ you simply run few commands
 ```python
 import pyttsx3
 engine = pyttsx3.init()
-engine.say("now we're talkin')
+engine.say("now we're talkin'")
 engine.runAndWait()
 ```
 and it's literally that easy! But for Polish there was no such thing until now.
