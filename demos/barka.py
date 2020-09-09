@@ -14,7 +14,7 @@ Razem z Tobą nowy zacznę dziś łów.
 
 Jestem ubogim człowiekiem, 
 Moim skarbem są ręce gotowe 
-Do pracy z Tobą 
+Do pracy z Tobą, 
 I czyste serce. 
 
 
@@ -26,7 +26,7 @@ Razem z Tobą nowy zacznę dziś łów.
 
 Ty, potrzebujesz mych dłoni, 
 Mego serca młodego zapałem 
-Mych kropli potu 
+Mych kropli potu, 
 I samotności. 
 
 
@@ -36,9 +36,9 @@ Swoją barkę pozostawiam na brzegu,
 Razem z Tobą nowy zacznę dziś łów. 
 
 
-Dziś wypłyniemy już razem 
+Dziś wypłyniemy już razem, 
 Łowić serca na morzach dusz ludzkich 
-Twej prawdy siecią 
+Twej prawdy siecią, 
 I słowem życia. 
 """
 
