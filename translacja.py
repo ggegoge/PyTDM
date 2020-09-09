@@ -7,11 +7,12 @@ try:
 except:
 	from .nums import num_to_speech
 
+# ~40 lines of regexp
 repolon = {
 	r'(\b[wz])(\s)': r'\1',    # lone letters
 	
-	'rz': 'ż',
-	r'([^pt])ch': r'\1h',     # upraszczam polski
+	'rz': 'ż',       # upraszczam polski
+	r'([^pt])ch': r'\1h',     # ph i th nie mogą powstać
 	'ó': 'u',
 	'ęł': 'eł',
 	'ął': 'oł',
@@ -38,7 +39,9 @@ repolon = {
 	r'([śptksh])w(\w+)': r'\1f\2',
 	r'([śptkh])d(\w+)': r'\1t\2',
 	r'([^cs])z([kptf])': r'\1s\2',
-	r'w([kptf])': r'f\1',
+	r'w([kpthf])': r'f\1',
+	r'ż([kptfh])': r'sz\1',
+	
 	r'ż\b': 'sz',
 	r'(\S)w\b': r'\1f',
 	r'b\b': 'p',
@@ -59,13 +62,15 @@ repolon = {
 }
 
 
-
+# ~50 lns of regexp
 angl = {            # niedobitki ch
 	'ch': 'kh',
 	r'([fk])i(e)': r'\1\2',     # bez palatalizacji po nich
 	# r'([fk])i(e)': r'\1i\2hh',     
-	r'\bnie\b': 'ne',         # ogół spółgłosek
-	r'w': 'v',
+	r'\bnie\b': 'ne',              # nie i mnie są hardcoded XD
+	r'\bmnie\b': 'mne',
+	
+	r'w': 'v',                  # ogół spółgłosek
 	'ś': 'sz',
 	'ź': 'ż',
 	'ć': 'cz',
@@ -101,8 +106,8 @@ angl = {            # niedobitki ch
 	r'([aeoi])(\w+)oł': r'\1\2 oh',
 	'oł': 'ow',
 	'ł': 'w',
-	r'(\b\w{1})aj': r'\1ie',
-	r'(\w+)(\w{1})aj(\w+)': r'\1 \2igh\3',
+	r'(\b\w{1})aj': r'\1ie ',
+	r'(\w{1,})(\w{1})aj(\w+)': r'\1\2igh \3',
 	r'(\w+)(\w{1})aj': r'\1 \2ie',	
 	r'aj': ' i',
 	
