@@ -38,7 +38,10 @@ and then you can happily listen to the sweet sound of the polish language spoken
 
 ### dependencies
 
-all you need are built-in packages like `re` and apart from that the `pyttsx3` package [avalaible on pypi](https://pypi.org/project/pyttsx3/)
+all you need are built-in packages like `re` and apart from that the `pyttsx3` package [avalaible on pypi](https://pypi.org/project/pyttsx3/).
+
+###### what OS? 
+The only problem is it's different for every OS. Eg windows is stoopid _(per usual)_ and reads 'ch' as /k/ and not /t͡ʃ/. For all I know it works best on iOS but I lack enough feedback to know whether it is fine on Linux and what other issues are there when using windows (+ I highly discourage everyone from using windows. like at all).
 ###### iOS
 for iOS see the `pythonista` directory. Everything there is the iOS version of `PyTDM`
 
