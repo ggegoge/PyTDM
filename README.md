@@ -1,5 +1,5 @@
 # PyTDM
-ie. __Pytońska treść do mowy__ which is Polish for _Python Text To Speech_.
+ie. __Pytońska treść do mowy__ which is Polish for _Python Text To Speech_. Both for standard python and for iOS (iOS version is in the `pythonista` [directory](https://github.com/TichyProgs/PyTDM/blob/master/pythonista/pythonista_README.md))
 
 ### ok but why 
 This lil library was designed in order to assure that people programming for Pollacks have some sort of a offline-working _text to speech_ python software.
@@ -37,7 +37,10 @@ mowa.mów("dzień dobry, dobranoc")
 and then you can happily listen to the sweet sound of the polish language spoken by the `pyttsx3` synthesiser guy. Isn't that great?
 
 ### dependencies
+
 all you need are built-in packages like `re` and apart from that the `pyttsx3` package [avalaible on pypi](https://pypi.org/project/pyttsx3/)
+###### iOS
+for iOS see the `pythonista` directory. Everything there is the iOS version of `PyTDM`
 
 ##### Function names are weird?
 As a cautious reader might have noticed the main speaking function is `mów` (fyi it means _say_ just like in the `pyttsx3`). One could ask _wthell?_ or more properly __co do diabła?__ but that is exactly how the package was intended to be: the functions have polish names. __Deal with it.__
