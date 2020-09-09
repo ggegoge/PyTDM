@@ -108,8 +108,10 @@ angl = {            # niedobitki ch
 	r'a\b': 'ah',      # wstawiam a tam gdzie się mogło zgubić przy rozdzielaniu na np 'yeah'
 	'j': 'y',
 	r'J': 'j',
-	r'o([^whym]|\b)': r'aw\1',       
-	r'u': 'oo',
+	r'o([^whym]|\b)': r'aw\1',
+    r'uw\b': 'ooo',
+	r'u([^w])': r'oo\1',
+	r'u(w\w+)': r'oo \1',
 	r'g([ei])': r'gh\1'        # g != dż
 }
 
