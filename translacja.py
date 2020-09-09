@@ -75,7 +75,8 @@ angl = {
 	'cz': 'tch',
 	'sz': 'sh',
 	'dż': 'J',
-	'ż': 'zsh',
+	r'([^bvzg]|\b)ż': r'\1zsh',
+	'ż': 'sh',
 	r'c([^h]|\b)': r'ts\1',
 	                             # 'a' 'i' 'e' samotne 
 	r'a([^jłr]|\b)': r'ah\1',
@@ -102,6 +103,7 @@ angl = {
 	r'(\w+)(\w{1})aj(\w+)': r'\1 \2igh\3',
 	r'(\w+)(\w{1})aj': r'\1 \2ie',	
 	r'aj': ' i',
+	r'a\b': 'ah',      # wstawiam a tam gdzie się mogło zgubić przy rozdzielaniu na np 'yeah'
 	'j': 'y',
 	r'J': 'j',
 	r'o([^whym]|\b)': r'aw\1',
