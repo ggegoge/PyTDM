@@ -63,6 +63,7 @@ repolon = {
 angl = {            # niedobitki ch
 	'ch': 'kh',
 	r'([fk])i(e)': r'\1\2',     # bez palatalizacji po nich
+	# r'([fk])i(e)': r'\1i\2hh',     
 	r'\bnie\b': 'ne',         # ogół spółgłosek
 	r'w': 'v',
 	'ś': 'sz',
@@ -110,7 +111,7 @@ angl = {            # niedobitki ch
 	r'J': 'j',
 	r'o([^whym]|\b)': r'aw\1',
     r'uw\b': 'ooo',
-	r'u([^w])': r'oo\1',
+	r'u([^w]|\b)': r'oo\1',
 	r'u(w\w+)': r'oo \1',
 	r'g([ei])': r'gh\1'        # g != dż
 }
