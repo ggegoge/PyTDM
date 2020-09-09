@@ -1,4 +1,4 @@
-# patterns najpierw
+"""zamiana polskiego na uproszczony polski, a następnie na angielski"""
 
 import re
 # relative vs non relative import bs
@@ -80,6 +80,7 @@ angl = {
 	                             # 'a' 'i' 'e' samotne 
 	r'a([^jłr]|\b)': r'ah\1',
 	r'([^ji])e([^j]|\b)': r'\1eh\2',
+	r'eh\b': 'ehh',
 	r'\bi\b': r'e', 
 	
 	r'y': 'I',                     # igrek na razie pod placeholderem takim
@@ -88,7 +89,7 @@ angl = {
 	r'\bje(\w+)([eioua])': r'yeah \1\2',
 	r'(\w+)je(\w+)': r'\1yeh\2',
 	r'(\w{1})ie': r'\1ieh',
-	r'i([^ea]|\b)': r'EE\1',   # EE by ominąć zmiany na małych e
+	r'i([^eao]|\b)': r'EE\1',   # EE by ominąć zmiany na małych e
 	r'ej\b': 'ei',
 	r'ej\B': 'ay',   
 	r'EE': 'ee',        # i powrót ee
