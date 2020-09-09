@@ -1,4 +1,4 @@
-#PyTDM
+# PyTDM
 ie. __Pytońska treść do mowy__ which is Polish for _Python Text To Speech_.
 
 ### ok but why 
@@ -17,7 +17,7 @@ and it's literally that easy! But for Polish there was no such thing until now.
 ### how it's made
 It's based on the same `pyttsx3` package I've just mentioned. The thing is that contrary to what many English speaking people think (looking at u americans) Polish actually __is__ pronounceable for someone knowing English. 
 
-What `pytdm` does is 
+What `PyTDM` does is 
 
 * first it _translates*_ the given polish string/text into english
 * then it gets pronounced with the `pyttsx3` 
@@ -26,12 +26,12 @@ The asterisk above next to the word "translates" is there for a reason – it's 
 We shall get back to that later
 
 ### usage
-An example for how well does the software work with approxima... _translation_ of polish words is to be seen in the `demo.py` file. You just can run it and then see how well it handles the most sacred polish song (actually the second sacred-est. For the most sacred one see `barka.py`) – the anthem of the third republic of Poland. 
+An example for how well does the software work with approxima... _translation_ of polish words is to be seen in the `demo.py` file. You just can run it and then see how well it handles the most sacred polish song (actually the second sacred-est. For the most sacred one see `barka.py` (both demo files are in the `demo` directory but you should run them in the same directory `mowa.py` is)) – the anthem of the third republic of Poland. 
 
 But just for simple basic stuff you should do it as follows:
 
 ```python
-from pytdm import mowa
+from PyTDM import mowa
 mowa.mów("dzień dobry, dobranoc")
 ```
 and then you can happily listen to the sweet sound of the polish language spoken by the `pyttsx3` synthesiser guy. Isn't that great?
