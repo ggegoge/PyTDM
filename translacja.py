@@ -11,7 +11,7 @@ repolon = {
 	r'(\b[wz])(\s)': r'\1',    # lone letters
 	
 	'rz': 'ż',
-	r'([^p])ch': r'\1h',     # upraszczam polski
+	r'([^pt])ch': r'\1h',     # upraszczam polski
 	'ó': 'u',
 	'ęł': 'eł',
 	'ął': 'oł',
