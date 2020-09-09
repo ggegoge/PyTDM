@@ -19,6 +19,6 @@ def say(s):
 def mów(s):
 	# apple's text to speech doesn't handle all those signs apart from commas too well
 	s_corrected = s.replace(".", ",").replace("!", ",").replace(":", ",").replace("?", ",")
-	translated = tłumacz(s.lower())
+	translated = tłumacz(s_corrected.lower())
 	print(s)
 	say(translated)
