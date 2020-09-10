@@ -1,4 +1,4 @@
-'''PyTDM's version for Pythonista'''
+'''PyTDM's version for Pythonista ie. iOS'''
 
 import speech
 # relative vs non relative import bs
@@ -16,9 +16,15 @@ def say(s):
 	# engine.runAndWait()
 
 
-def mów(s):
+def mów(s, show=True):
 	# apple's text to speech doesn't handle all those signs apart from commas too well
 	s_corrected = s.replace(".", ",").replace("!", ",").replace(":", ",").replace("?", ",")
 	translated = tłumacz(s_corrected.lower())
-	print(s)
+	if show:
+		print(s)
 	say(translated)
+	
+def mow(s, show=True):
+	mów(s, show)
+def tlumacz(s):
+	return tłumacz(s)
