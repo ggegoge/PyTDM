@@ -1,4 +1,4 @@
-from setuptools import setup #, find_packages,
+from setuptools import setup 
 
 with open("README.md", 'r') as f:
 	long_description = f.read()
@@ -6,7 +6,7 @@ with open("README.md", 'r') as f:
 setup(
 	name='pytdm',
 	url='https://github.com/test0wanie/PyTDM',
-	version='0.0.4',
+	version='0.0.6',
 	description='Pytońska treść do mowy – Polish text to speech',
 	long_description=long_description,
 	long_description_content_type="text/markdown",
