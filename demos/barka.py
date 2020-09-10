@@ -1,4 +1,4 @@
-from mowa import *
+from pytdm import mów
 
 hymn = """Pan kiedyś stanął nad brzegiem, 
 Szukał ludzi gotowych pójść za Nim; 
