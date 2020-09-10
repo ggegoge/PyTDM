@@ -1,9 +1,11 @@
 # PyTDM
-ie. __Pytońska treść do mowy__ which is Polish for _Python Text To Speech_. Both for standard python and for iOS (iOS version is in the `pythonista` [directory on github](https://github.com/test0wanie/PyTDM/blob/master/pythonista/pythonista_README.md)).
+ie. __Pytońska treść do mowy__ which is Polish for _Python Text To Speech_. Package for turining text written in Polish into speech.
+
+Both for standard python and for iOS.
 
 ### ok but why 
 This lil library was designed in order to assure that people programming for Pollacks have some sort of a offline-working _text to speech_ python software.
-For english speaking people there already is the `pyttsx3` library which provides such functionalities.
+For English speaking people there already is the [`pyttsx3`](https://pypi.org/project/pyttsx3/) library which provides such functionalities.
 If you want your programme to _talk_ you simply run few commands
 
 ```python
@@ -35,34 +37,53 @@ The asterisk above next to the word "translates" is there for a reason – it's 
 We shall get back to that later
 
 ### usage
-An example for how well does the software work with approxima... _translation_ of polish words is to be seen in the `demo.py` file (avalaible on [my github](https://github.com/test0wanie/PyTDM)). You just can run it and then see how well it handles the most sacred polish song (actually the second sacred-est. For the most sacred one see `barka.py`. Both demo files are in the [`demos`](https://github.com/test0wanie/PyTDM/tree/master/demos) github directory) – the anthem of the third republic of Poland. Actually there is a video showing how the `demo.py` file works (recorded in low quality by me and posted on youtube) [here](https://youtu.be/bHWxwoAm0OE).
-
-But just for simple basic stuff you should do it as follows:
+For simple basic stuff you should do it as follows:
 
 ```python
 import pytdm
 pytdm.mów("dzień dobry, dobranoc")
 ```
-or the old way:
+or the second way:
+
 ```python
 from pytdm import mowa
 mowa.mów("dzień dobry, dobranoc")
 ```
-and then you can happily listen to the sweet sound of the polish language spoken by the `pyttsx3` synthesiser guy. Isn't that great?
+and then you can happily listen to the sweet sound of the polish language spoken by the `pyttsx3` synthesiser voice. Isn't that great?
 
-##### little disclaimer
+###### little disclaimer
 the functions have Polish names like `mów` or `tłumacz` with those funny strange letter but if you want you can use them without the diacritics eg. write `mow` or `tlumacz`. They will work just fine.
+
+##### examples
+An example for how well does the software work with approxima... _translation_ of polish words is to be seen in the `demo.py` file (avalaible on [my github](https://github.com/test0wanie/PyTDM)). You just can run it and then see how well it handles the most sacred polish song (actually the second sacred-est. For the most sacred one see `barka.py`. Both demo files are in the __[`demos`](https://github.com/test0wanie/PyTDM/tree/master/demos)__ github directory) – the anthem of the Third Polish Republic. 
+
+There is a video showing how the `demo.py` file works (recorded in low quality by me and posted on youtube) [here](https://youtu.be/bHWxwoAm0OE).
+
 
 ### dependencies
 
-all you need are built-in packages like `re` and apart from that the `pyttsx3` package [avalaible on pypi](https://pypi.org/project/pyttsx3/).
+all you need are built-in packages like `re` and apart from that the `pyttsx3` package (`v>=2.7`). It is [avalaible on pypi](https://pypi.org/project/pyttsx3/) so you can just do the classic:
 
-###### what OS? 
-The only problem is it's different for every OS. Eg windows is stoopid _(per usual)_ and reads 'ch' as /k/ and not /t͡ʃ/. For all I know it works best on iOS but I lack enough feedback to know whether it is fine on Linux and what other issues are there when using windows (+ I highly discourage everyone from using windows. like at all).
-###### iOS
-for iOS see the `pythonista` directory. Everything there is the iOS version of `PyTDM`
+```
+pip install pyttsx3
+```
+### what OS? 
+The only problem is it's different for every OS. 
 
-##### Function names are weird?
+* For all I know it works really well on __macOS__ – I use this OS myself therefore I can easily test that there and adjust it respectively. 
+
+For other OS I have only some feedback from other people:
+
+* Windows is stoopid _(per usual)_ and reads 'ch' as /k/ and not /t͡ʃ/ 
+* it's not bad on Linux but it has problems with eg. consonant clusters like _szcz_, when it tries to pronounce them as _shtch_ it spells (_es aitch tee cee aitch..._) the cluster instead of just just saying /ʃt͡ʃ/ as other versions tend to do. Also it sounds robotic which is _w e i r d_
+
+__In conclusion:__ it works ok for all of them but some sounds are realised differently on different OSs.
+
+###### mobile versions – iOS
+for __iOS__ see the __`pythonista`__ [directory on github](https://github.com/test0wanie/PyTDM/blob/master/pythonista/README_iOS.md). Everything there is the iOS version of `PyTDM`.
+
+
+#### Function names are weird?
 As a cautious reader might have noticed the main speaking function is `mów` (fyi it means _say_ just like in the `pyttsx3`). One could ask _wthell?_ or more properly __co do diabła?__ but that is exactly how the package was intended to be: the functions have polish names. __Deal with it.__
 
 ##### behind the scenes
@@ -79,14 +100,20 @@ So when you do something like `mów('czuję, że będzie dziś dość średni dz
 that returns this simplified polish text:
 `'czuje, że bendźe dźiś dość średni dźen'`
 and it is passed to the `anglicyzuj` which gives the final result to be said by `pyttsx3`:
-`'choo yeah, zsheh behnjeh jeesh dawshtch shrehdnee jehn'`
 
-it sure is amazing
+`'choo yeah, zshehh behnjehh jeesh dawshtch shrehdnee jehn'`
 
-
+it sure is amazing.
 
 ##### TO DO
-* saving mp3
+* saving mp3s
 * polish the Polish
-* implement pronouncing numbers above 199
+	* implement pronouncing numbers above 199
+	* better handling of numbers mixed-in with words
+	* no hardcoded words is the goal
+	* better handling of syllables, diphtongs and other strange edgecases eg. _je, ej, aj, świe_ etc
+* a good idea would be to provide alternative rules of translation for different systems in the future
+* optional [`gTTS`](https://pypi.org/project/gTTS/) mode
 * extend this list
+
+feel free to fork the github repo:)
