@@ -6,7 +6,7 @@ with open("README.md", 'r') as f:
 setup(
 	name='pytdm',
 	url='https://github.com/test0wanie/PyTDM',
-	version='0.0.6',
+	version='0.0.7',
 	description='Pytońska treść do mowy – Polish text to speech',
 	long_description=long_description,
 	long_description_content_type="text/markdown",
