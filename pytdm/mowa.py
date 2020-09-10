@@ -14,7 +14,8 @@ def say(s):
 	engine.runAndWait()
 
 
-def mów(s):
+def mów(s, show=True):
 	translated = tłumacz(s.lower())
-	print(s)
+	if show:
+		print(s)
 	say(translated)
