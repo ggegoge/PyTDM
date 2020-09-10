@@ -1,5 +1,5 @@
 # PyTDM
-ie. __Pytońska treść do mowy__ which is Polish for _Python Text To Speech_. Both for standard python and for iOS (iOS version is in the `pythonista` [directory on github](https://github.com/TichyProgs/PyTDM/blob/master/pythonista/pythonista_README.md))
+ie. __Pytońska treść do mowy__ which is Polish for _Python Text To Speech_. Both for standard python and for iOS (iOS version is in the `pythonista` [directory on github](https://github.com/test0wanie/PyTDM/blob/master/pythonista/pythonista_README.md)).
 
 ### ok but why 
 This lil library was designed in order to assure that people programming for Pollacks have some sort of a offline-working _text to speech_ python software.
@@ -35,7 +35,7 @@ The asterisk above next to the word "translates" is there for a reason – it's 
 We shall get back to that later
 
 ### usage
-An example for how well does the software work with approxima... _translation_ of polish words is to be seen in the `demo.py` file. You just can run it and then see how well it handles the most sacred polish song (actually the second sacred-est. For the most sacred one see `barka.py` (both demo files are in the `demo` directory but you should run them in the same directory `mowa.py` is)) – the anthem of the third republic of Poland. 
+An example for how well does the software work with approxima... _translation_ of polish words is to be seen in the `demo.py` file (avalaible on [my github](https://github.com/test0wanie/PyTDM)). You just can run it and then see how well it handles the most sacred polish song (actually the second sacred-est. For the most sacred one see `barka.py`. Both demo files are in the [`demos`](https://github.com/test0wanie/PyTDM/tree/master/demos) github directory) – the anthem of the third republic of Poland. Actually there is a video showing how the `demo.py` file works (recorded in low quality by me and posted on youtube) [here](https://youtu.be/bHWxwoAm0OE).
 
 But just for simple basic stuff you should do it as follows:
 
