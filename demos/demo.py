@@ -1,4 +1,4 @@
-from mowa import *
+from pytdm import mów
 
 hymn = """Jeszcze Polska nie zginęła,
 Kiedy my żyjemy. 
