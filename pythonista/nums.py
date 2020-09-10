@@ -49,6 +49,8 @@ def num_to_speech(n):
 			return dec[n]
 		else:					
 			return dec[n - (n % 10)] + " " + sub10[n%10]
-	else:
+	elif n < 200:
 		return dec[100] + num_to_speech(n%100)
+	else:
+		raise NotImplementedError("cannot pronounce numbers above 199")
 	
