@@ -50,6 +50,9 @@ mowa.mów("dzień dobry, dobranoc")
 ```
 and then you can happily listen to the sweet sound of the polish language spoken by the `pyttsx3` synthesiser guy. Isn't that great?
 
+##### little disclaimer
+the functions have Polish names like `mów` or `tłumacz` with those funny strange letter but if you want you can use them without the diacritics eg. write `mow` or `tlumacz`. They will work just fine.
+
 ### dependencies
 
 all you need are built-in packages like `re` and apart from that the `pyttsx3` package [avalaible on pypi](https://pypi.org/project/pyttsx3/).
