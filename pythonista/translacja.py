@@ -7,11 +7,12 @@ try:
 except:
 	from .nums import num_to_speech
 
+# ~40 lines of regexp
 repolon = {
 	r'(\b[wz])(\s)': r'\1',    # lone letters
 	
-	'rz': 'ż',
-	r'([^pt])ch': r'\1h',     # upraszczam polski
+	'rz': 'ż',       # upraszczam polski
+	r'([^pt])ch': r'\1h',     # ph i th nie mogą powstać
 	'ó': 'u',
 	'ęł': 'eł',
 	'ął': 'oł',
@@ -38,12 +39,14 @@ repolon = {
 	r'([śptksh])w(\w+)': r'\1f\2',
 	r'([śptkh])d(\w+)': r'\1t\2',
 	r'([^cs])z([kptf])': r'\1s\2',
-	r'w([kptf])': r'f\1',
+	r'w([kptshf])': r'f\1',
+	r'ż([kptsfh])': r'sz\1',
+	
 	r'ż\b': 'sz',
 	r'(\S)w\b': r'\1f',
-	r'b\b': 'p',
-	r'g\b': 'k',
-	r'd\b': 't',
+	r'\Bb\b': 'p',
+	r'\Bg\b': 'k',
+	r'\Bd\b': 't',
 	r'([^cs\s])z\b': r'\1s',
 	r'ź\b': 'ś',
 	r'dź\b': 'ć',
@@ -59,12 +62,17 @@ repolon = {
 }
 
 
-
-angl = {            # niedobitki ch
-	'ch': 'kh',
-	r'([fk])i(e)': r'\1\2',     # bez palatalizacji po nich
-	r'\bnie\b': 'ne',         # ogół spółgłosek
-	r'w': 'v',
+# ~50 lns of regexp. yet another mess that could be avoided with IPA
+angl = {
+	'\be\b': r'\bFF\b',
+    'ii': 'i',                # ii nie umie rozroznic 
+	'ch': 'kh',                # niedobitki ch
+	r'([fk])i(e)': r'\1\2',              # bez palatalizacji po nich
+	# r'([fk])i(e)': r'\1i\2hh',     
+	r'\bnie\b': 'ne',              # nie i mnie są hardcoded XD
+	r'\bmnie\b': 'mne',
+	
+	r'w': 'v',                  # ogół spółgłosek
 	'ś': 'sz',
 	'ź': 'ż',
 	'ć': 'cz',
@@ -100,17 +108,39 @@ angl = {            # niedobitki ch
 	r'([aeoi])(\w+)oł': r'\1\2 oh',
 	'oł': 'ow',
 	'ł': 'w',
-	r'(\b\w{1})aj': r'\1ie',
-	r'(\w+)(\w{1})aj(\w+)': r'\1 \2igh\3',
+	r'(\b\w{1})aj': r'\1ie ',
+	r'(\w{1,})(\w{1})aj(\w+)': r'\1\2igh \3',
 	r'(\w+)(\w{1})aj': r'\1 \2ie',	
 	r'aj': ' i',
 	
 	r'a\b': 'ah',      # wstawiam a tam gdzie się mogło zgubić przy rozdzielaniu na np 'yeah'
 	'j': 'y',
 	r'J': 'j',
-	r'o([^whym]|\b)': r'aw\1',       
-	r'u': 'oo',
-	r'g([ei])': r'gh\1'        # g != dż
+	r'o([^whym]|\b)': r'aw\1',
+    r'uw\b': 'ooo',
+	r'u([^w]|\b)': r'oo\1',
+	r'u(w\w+)': r'oo \1',
+	r'g([ei])': r'gh\1',       # g != dż
+
+	r'\bb\b': 'bhehh',
+	r'\bts\b': 'tsehh',         # letters when not in words ie. their names
+	r'\bd\b': 'dehh',           # eg. y == igrek
+	r'\bFF\b': 'ehh',
+	r'\bf\b': 'ehf',
+	r'\bg\b': 'ghiehh',
+	r'\bh\b': 'hah',
+	r'\by\b': 'yacht',
+	r'\bk\b': 'kah',
+	r'\bp\b': 'pehh',
+	r'\bq\b': 'coo',
+	r'\br\b': 'erh',
+	r'\bss\b': 'ess',
+	r'\bt\b': 'tehh',
+	r'\bv\b': 'voo',
+	r'\bx\b': 'eeks',
+	r'\bih\b': 'eegrehk',
+	r'\bs\b': 'seht'
+	# 'p': ts t e f k h e y k l m n aw p q r ss t oo vx ih s
 }
 
 
@@ -125,8 +155,17 @@ def anglicyzuj(s):
 	subbed = []
 	for w in s.split():
 		sub = w
-		if re.match(r'\d+', w):
-			sub = num_to_speech(int(re.match(r'\d+', w).group(0))) + ''.join(re.findall(r'\D+', w))
+		if re.match(r'(-|)\d+', w):
+			sub = num_to_speech(int(re.match(r'(-|)\d+', w).group(0))) \
+				  + ''.join(re.findall(r'\D+', w))
+		elif re.match(r'(\w+[^\d-])((-|)\d+)', w):
+			# eg "kot18"
+			sub = anglicyzuj(re.match(r'(\w+[^\d-])((-|)\d+)', w).group(1)) + ' '\
+							 + num_to_speech(int((re.match(r'(\w+[^\d-])((-|)\d+)', w).group(2)))) 
+		elif re.match(r'(.)(\d+)', w):    # this needs to be improved
+			# eg "'-7" should be dealt with as well 
+			sub = num_to_speech(int((re.match(r'(.)(\d+)', w).group(2)))) \
+							 # + ''.join(re.findall(r'\D+', w))
 		else:
 			for key in angl:
 				sub = re.sub(re.compile(key), angl[key], sub)
