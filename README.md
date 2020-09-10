@@ -1,5 +1,5 @@
 # PyTDM
-ie. __Pytońska treść do mowy__ which is Polish for _Python Text To Speech_. Both for standard python and for iOS (iOS version is in the `pythonista` [directory](https://github.com/TichyProgs/PyTDM/blob/master/pythonista/pythonista_README.md))
+ie. __Pytońska treść do mowy__ which is Polish for _Python Text To Speech_. Both for standard python and for iOS (iOS version is in the `pythonista` [directory on github](https://github.com/TichyProgs/PyTDM/blob/master/pythonista/pythonista_README.md))
 
 ### ok but why 
 This lil library was designed in order to assure that people programming for Pollacks have some sort of a offline-working _text to speech_ python software.
@@ -12,7 +12,16 @@ engine = pyttsx3.init()
 engine.say("now we're talkin'")
 engine.runAndWait()
 ```
-and it's literally that easy! But for Polish there was no such thing until now.
+and it's literally that easy! But for Polish there was no such thing. Until now.
+
+### installation
+it is avalaible on [PyPI!](https://pypi.org/project/pytdm/)
+you can just run:
+
+```python
+pip install pytdm
+```
+and you can use it just like that!
 
 ### how it's made
 It's based on the same `pyttsx3` package I've just mentioned. The thing is that contrary to what many English speaking people think (looking at u americans) Polish actually __is__ pronounceable for someone knowing English. 
@@ -31,7 +40,12 @@ An example for how well does the software work with approxima... _translation_ o
 But just for simple basic stuff you should do it as follows:
 
 ```python
-from PyTDM import mowa
+import pytdm
+pytdm.mów("dzień dobry, dobranoc")
+```
+or the old way:
+```python
+from pytdm import mowa
 mowa.mów("dzień dobry, dobranoc")
 ```
 and then you can happily listen to the sweet sound of the polish language spoken by the `pyttsx3` synthesiser guy. Isn't that great?
@@ -58,7 +72,7 @@ For every word passed to the `mów` function it is first _tanslated_ by another 
 
 only then `mów` gives the anglicised repolonised text to the `engine.say` as shown above.
 
-So when you do something like `mów('czuję, że będzie dziś dość średni dzień')` it first calls `tłumacz` which calls `repolonise`
+So when you do something like `mów('czuję, że będzie dziś dość średni dzień')` it first calls `tłumacz` which calls `repolonizuj`
 that returns this simplified polish text:
 `'czuje, że bendźe dźiś dość średni dźen'`
 and it is passed to the `anglicyzuj` which gives the final result to be said by `pyttsx3`:
