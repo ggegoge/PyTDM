@@ -1,4 +1,4 @@
-"""zamiana polskiego na uproszczony polski, a następnie na angielski"""
+"""polish -> simplified polish -> english transcription"""
 
 import re
 # relative vs non relative import bs
@@ -62,10 +62,10 @@ repolon = {
 }
 
 
-# ~50 lns of regexp. yet another mess that could be avoided with IPA
+# ~60 lns of regexp. yet another mess that could be avoided with IPA
 angl = {
 	'\be\b': r'\bFF\b',
-    'ii': 'i',                # ii nie umie rozroznic 
+    r'\B[ji]i': 'i',                # ji/ii nie umie rozroznic 
 	'ch': 'kh',                # niedobitki ch
 	r'([fk])i(e)': r'\1\2',              # bez palatalizacji po nich
 	# r'([fk])i(e)': r'\1i\2hh',     
@@ -115,7 +115,7 @@ angl = {
 	
 	r'a\b': 'ah',      # wstawiam a tam gdzie się mogło zgubić przy rozdzielaniu na np 'yeah'
 	'j': 'y',
-	r'J': 'j',
+	r'J': 'dj',
 	r'o([^whym]|\b)': r'aw\1',
     r'uw\b': 'ooo',
 	r'u([^w]|\b)': r'oo\1',
@@ -133,25 +133,29 @@ angl = {
 	r'\bk\b': 'kah',
 	r'\bp\b': 'pehh',
 	r'\bq\b': 'coo',
-	r'\br\b': 'erh',
+	r'\br\b': 'ehr',
 	r'\bss\b': 'ess',
 	r'\bt\b': 'tehh',
 	r'\bv\b': 'voo',
 	r'\bx\b': 'eeks',
 	r'\bih\b': 'eegrehk',
 	r'\bs\b': 'seht'
-	# 'p': ts t e f k h e y k l m n aw p q r ss t oo vx ih s
 }
 
 
-def repolonizuj(s):
+def repolonizuj(s : str) -> str:
+	'''
+	changes given text in standard polish ortography into a simplified 
+	phonetic version inspired by futuryści
+	'''
 	subbed = s
 	for key in repolon:
 		subbed = re.sub(re.compile(key), repolon[key], subbed)
 	return subbed
 
 	
-def anglicyzuj(s):
+def anglicyzuj(s : str) -> str:
+	'anglicises simplified polish text'
 	subbed = []
 	for w in s.split():
 		sub = w
@@ -174,6 +178,10 @@ def anglicyzuj(s):
 	
 
 
-def tłumacz(s):
+def tłumacz(s : str) -> str:
+	'''
+	returns given polish text transcribed into english.
+	can also be called with tlumacz(s)
+	'''
 	s = repolonizuj(s)
 	return anglicyzuj(s)

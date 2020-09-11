@@ -1,3 +1,5 @@
+'''speech'''
+
 import pyttsx3
 # relative vs non relative import bs
 try:
@@ -10,11 +12,16 @@ except ModuleNotFoundError:
 engine = pyttsx3.init()
 
 def say(s):
+	'pyttsx3 say function'
 	engine.say(s)
 	engine.runAndWait()
 
 
-def mów(s, show=True):
+def mów(s : str, show=True):
+	'''
+	say given polish text then print it if show == True.
+	you can also call it with mow(s)
+	'''
 	translated = tłumacz(s.lower())
 	if show:
 		print(s)

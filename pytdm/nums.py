@@ -1,3 +1,5 @@
+'''module for anglicisation of numbers'''
+
 sub10 = {
 	0: "serraw",
 	1: "yeah denn",
@@ -37,7 +39,8 @@ dec = {
 }
 
 
-def num_to_speech(n):
+def num_to_speech(n : int) -> str:
+	'anglicises given number n. works only for -199 <= n <= 199'
 	if n < 0:
 		return "meenoos " + num_to_speech(-n)
 	if n < 10:
@@ -50,7 +53,7 @@ def num_to_speech(n):
 		else:					
 			return dec[n - (n % 10)] + " " + sub10[n%10]
 	elif n < 200:
-		return dec[100] + num_to_speech(n%100)
+		return dec[100] + ' '+ num_to_speech(n%100)
 	else:
-		raise NotImplementedError("cannot pronounce numbers above 199")
+		raise NotImplementedError("cannot pronounce numbers with absoulute value above 199")
 	
