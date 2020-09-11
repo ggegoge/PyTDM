@@ -1,10 +1,10 @@
 # PyTDM
-ie. __Pytońska treść do mowy__ which is Polish for _Python Text To Speech_. Package for turining text written in Polish into speech.
+ie. __Pytońska treść do mowy__ which is Polish for _Python Text to Speech_. Package for turning text written in Polish into speech.
 
-Both for standard python and for iOS.
+Both for standard Python3 and for iOS.
 
 ### ok but why 
-This lil library was designed in order to assure that people programming for Pollacks have some sort of a offline-working _text to speech_ python software.
+This lil library was designed in order to assure that people programming for Pollacks have some sort of an offline-working _text to speech_ python software.
 For English speaking people there already is the [`pyttsx3`](https://pypi.org/project/pyttsx3/) library which provides such functionalities.
 If you want your programme to _talk_ you simply run few commands
 
@@ -17,7 +17,7 @@ engine.runAndWait()
 and it's literally that easy! But for Polish there was no such thing. Until now.
 
 ### installation
-it is avalaible on [PyPI!](https://pypi.org/project/pytdm/)
+it is avalaible on [PyPI](https://pypi.org/project/pytdm/)!
 you can just run:
 
 ```python
@@ -26,7 +26,7 @@ pip install pytdm
 and you can use it just like that!
 
 ### how it's made
-It's based on the same `pyttsx3` package I've just mentioned. The thing is that contrary to what many English speaking people think (looking at u americans) Polish actually __is__ pronounceable for someone knowing English. 
+It's based on the `pyttsx3` package I've just mentioned. The thing is that contrary to what many English speaking people think (looking at u americans) Polish actually __is__ pronounceable for someone knowing English. 
 
 What `PyTDM` does is 
 
@@ -54,6 +54,9 @@ and then you can happily listen to the sweet sound of the polish language spoken
 ###### little disclaimer
 the functions have Polish names like `mów` or `tłumacz` with those funny strange letter but if you want you can use them without the diacritics eg. write `mow` or `tlumacz`. They will work just fine.
 
+In general if have any problems first you can type eg. `help(pytdm.mow)` and read the info provided there.
+
+
 ##### examples
 An example for how well does the software work with approxima... _translation_ of polish words is to be seen in the `demo.py` file (avalaible on [my github](https://github.com/test0wanie/PyTDM)). You just can run it and then see how well it handles the most sacred polish song (actually the second sacred-est. For the most sacred one see `barka.py`. Both demo files are in the __[`demos`](https://github.com/test0wanie/PyTDM/tree/master/demos)__ github directory) – the anthem of the Third Polish Republic. 
 
@@ -74,8 +77,8 @@ The only problem is it's different for every OS.
 
 For other OS I have only some feedback from other people:
 
-* Windows is stoopid _(per usual)_ and reads 'ch' as /k/ and not /t͡ʃ/ 
-* it's not bad on Linux but it has problems with eg. consonant clusters like _szcz_, when it tries to pronounce them as _shtch_ it spells (_es aitch tee cee aitch..._) the cluster instead of just just saying /ʃt͡ʃ/ as other versions tend to do. Also it sounds robotic which is _w e i r d_
+* __Windows__ is stoopid _(per usual)_ and reads 'ch' as /k/ and not /t͡ʃ/. Apart from that and _maybe_ some other mistakes it is fine. 
+* it's not bad on __Linux__ but it has problems with eg. consonant clusters like _szcz_. When it tries to pronounce them as _shtch_ it spells (_es aitch tee cee aitch..._) the cluster instead of just just saying /ʃt͡ʃ/ as other versions tend to do. Also it sounds robotic which is _w e i r d_
 
 __In conclusion:__ it works ok for all of them but some sounds are realised differently on different OSs.
 
@@ -91,8 +94,9 @@ Now for some calrification about how the so called _translation_ process actuall
 
 For every word passed to the `mów` function it is first _tanslated_ by another polish-named func `tłumacz` (ie. __translate__) and it calls 2 more functions first:
 
-* `repolonizuj` ie. __repolonise__ – it deals with all the weird polish ortographic stuff like the diagraphs, some consonants being devoiced etc
-* `anglicyzuj` ie. __anglicise__ – it takes the __repolonised__ text and tries to find the closes approximations for all the sounds that are to be found.
+* `repolonizuj` ie. __repolonise__ – it deals with all the weird polish ortographic stuff like the diagraphs, some consonants being devoiced etc. **_[Futuryści](https://pl.wikisource.org/wiki/Mańifest_w_sprawie_ortografji_fonetycznej)_** inspired
+ 
+* `anglicyzuj` ie. __anglicise__ – it takes the __repolonised__ text and tries to find the closest approximations for all the sounds that are to be found. It's doingit's best.
 
 only then `mów` gives the anglicised repolonised text to the `engine.say` as shown above.
 
@@ -106,14 +110,15 @@ and it is passed to the `anglicyzuj` which gives the final result to be said by 
 it sure is amazing.
 
 ##### TO DO
-* saving mp3s
+* saving mp3s (to do before `v0.1.0`)
 * polish the Polish
 	* implement pronouncing numbers above 199
 	* better handling of numbers mixed-in with words
 	* no hardcoded words is the goal
 	* better handling of syllables, diphtongs and other strange edgecases eg. _je, ej, aj, świe_ etc
-* a good idea would be to provide alternative rules of translation for different systems in the future
+* a good idea would be to provide alternative rules of _translation_ for different operating systems in the future
+* some proper documentation for functions and the _translation_ process
 * optional [`gTTS`](https://pypi.org/project/gTTS/) mode
 * extend this list
 
-feel free to fork the github repo:)
+feel free to fork the github repo and provide some videos:)
