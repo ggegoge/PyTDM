@@ -51,6 +51,14 @@ mowa.mów("dzień dobry, dobranoc")
 ```
 and then you can happily listen to the sweet sound of the polish language spoken by the `pyttsx3` synthesiser voice. Isn't that great?
 
+##### saving files
+With version `0.1.0` comes the functionality of saving spoken text in files! It is similar to simply making the computer say stuff:
+
+```python
+pytdm.zapisz("dzień dobry świecie!", "example.mp3")
+```
+and your file will be saved in your cwd under the name `"example.mp3"`
+
 ###### little disclaimer
 the functions have Polish names like `mów` or `tłumacz` with those funny strange letter but if you want you can use them without the diacritics eg. write `mow` or `tlumacz`. They will work just fine.
 
@@ -96,7 +104,7 @@ For every word passed to the `mów` function it is first _tanslated_ by another 
 
 * `repolonizuj` ie. __repolonise__ – it deals with all the weird polish ortographic stuff like the diagraphs, some consonants being devoiced etc. **_[Futuryści](https://pl.wikisource.org/wiki/Mańifest_w_sprawie_ortografji_fonetycznej)_** inspired
  
-* `anglicyzuj` ie. __anglicise__ – it takes the __repolonised__ text and tries to find the closest approximations for all the sounds that are to be found. It's doingit's best.
+* `anglicyzuj` ie. __anglicise__ – it takes the __repolonised__ text and tries to find the closest approximations for all the sounds that are to be found. It's doing its best.
 
 only then `mów` gives the anglicised repolonised text to the `engine.say` as shown above.
 
@@ -109,15 +117,40 @@ and it is passed to the `anglicyzuj` which gives the final result to be said by 
 
 it sure is amazing.
 
+#### French 
+As you may have known the `pyttsx3` library offers any speech synthesiser avalaible to the system. Therefore it may happen one does also have the french one and now it is possible to use it with `pytdm` too.
+
+It is a relatively new feature so you shouldn't expect it to be flawless. As for now pronouncing numbers is not even implemented here. Also it hasn't been tested anywhere apart from macOS yet.
+
+he good thing is it is actually easier to transcribe Polish into French than into English. Why? Well despite what many people think about the French language it is actually pretty logical and much more regular than English. Its reading rules are not that messy and there are not as many strange edge cases. 
+
+
+
+##### How to use the french mode?
+just add the `lang="fr"` argument or simply `fr` when calling functions like `mów` or `tłumacz`. To set it back to english set `lang="en"`. 
+
+```python
+>>> import pytdm
+>>> pytdm.tłumacz("czuję, że będzie dziś dość średni dzień", "fr")
+'tchouyé, jé baindjé djich dochtch chrédgni djègn'
+>>> pytdm.mów("czuję, że będzie dziś dość średni dzień", "fr")
+czuję, że będzie dziś dość średni dzień
+```
+And there is the function `pytdm.translacja.francyzuj` that works the same as `anglicyzuj` mentioned before but for french
+
+---
+
+
 ##### TO DO
-* saving mp3s (to do before `v0.1.0`)
 * polish the Polish
 	* implement pronouncing numbers above 199
 	* better handling of numbers mixed-in with words
 	* no hardcoded words is the goal
 	* better handling of syllables, diphtongs and other strange edgecases eg. _je, ej, aj, świe_ etc
+* make french mode as good as the standard english one. right now there is no pronounciation for numbers in
 * a good idea would be to provide alternative rules of _translation_ for different operating systems in the future
-* some proper documentation for functions and the _translation_ process
+* add numbers to the french variant
+* some proper documentation for functions and the _translation_ process. Regexp is famously complicated as hell so an entire file explaining each and everyone of all those patterns etc is not a bad idea.
 * optional [`gTTS`](https://pypi.org/project/gTTS/) mode
 * extend this list
 
