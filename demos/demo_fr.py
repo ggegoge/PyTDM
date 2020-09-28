@@ -2,7 +2,7 @@ from pytdm import mów, tłumacz
 from termcolor import colored
 
 hymn = """Jeszcze Polska nie zginęła,
-Kiedy my żyjemy. 
+Kiedy my żyjemy.
 Co nam obca przemoc wzięła,
 Szablą odbierzemy.
 
@@ -34,9 +34,17 @@ Marsz, marsz, Dąbrowski..."""
 
 zwrotki = hymn.split("\n\n")
 
-print(colored(tłumacz("Zaśpiewam hymn Rzeczpospolitej Polski!", "fr"), "yellow"))
+print(
+    colored(
+        tłumacz("Zaśpiewam hymn Rzeczpospolitej Polski!".lower(), "fr"),
+        "blue",
+        attrs=["bold"],
+    )
+)
+
 mów("Zaśpiewam hymn Rzeczpospolitej Polski!\n", lang="fr")
 for zwrotka in zwrotki:
-    print(colored(tłumacz(zwrotka, "fr"), "yellow"))
+    for z in zwrotka.split('\n'):
+        print(colored(tłumacz(z.lower(), "fr"), "blue", attrs=["bold"]))
     mów(zwrotka, lang="fr")
     print("\n\n")
