@@ -42,9 +42,9 @@ Twej prawdy siecią,
 I słowem życia. 
 """
 
-zwrotki = hymn.split('\n\n')
+zwrotki = hymn.split("\n\n")
 
-mów('Zaśpiewam ulubioną pieśń ojca świętego Jana Pawła drugiego!\n')
+mów("Zaśpiewam ulubioną pieśń ojca świętego Jana Pawła drugiego!\n")
 for zwrotka in zwrotki:
-	mów(zwrotka)
-	print('\n\n')
+    mów(zwrotka)
+    print("\n\n")
