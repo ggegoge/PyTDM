@@ -31,9 +31,9 @@ Biją w tarabany.
 
 Marsz, marsz, Dąbrowski..."""
 
-zwrotki = hymn.split('\n\n')
+zwrotki = hymn.split("\n\n")
 
-mów('Zaśpiewam hymn Rzeczpospolitej Polski!\n')
+mów("Zaśpiewam hymn Rzeczpospolitej Polski!\n")
 for zwrotka in zwrotki:
-	mów(zwrotka)
-	print('\n\n')
+    mów(zwrotka)
+    print("\n\n")
