@@ -9,8 +9,11 @@ except ModuleNotFoundError:
     from .translacja import tłumacz
 
 
-def say(s):
-    speech.say(s)
+def say(s, lang=None):
+    if lang:
+        speech.say(s, lang)
+    else:
+        speech.say(s)
 
 
 def mów(s, lang="en", show=True):
@@ -19,10 +22,16 @@ def mów(s, lang="en", show=True):
         s.replace(".", ",").replace("!", ",").replace(
             ":", ",").replace("?", ",")
     )
-    translated = tłumacz(s_corrected.lower(), lang)
     if show:
         print(s)
-    say(translated)
+        langs = {"en": "en_US", "fr": "fr_FR"}
+    if lang in langs.keys():
+        translated = tłumacz(s_corrected.lower(), lang)
+        say(translated, langs[lang])
+    else:
+        print("%s not among avalaible languages, using the default" % lang)
+        translated = tłumacz(s_corrected.lower())
+        say(translated)
 
 
 # english keyboardz
