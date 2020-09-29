@@ -21,7 +21,7 @@ def change_lang(new_lang: str):
     if new_lang not in voices:
         raise NotImplementedError(
             "Voice %s isn't among avalaible voices." % new_lang)
-    LANG = new_lang
+    _LANG = new_lang
     new_lang = langs[new_lang]
     new_voice_id = "xd"
     vs = engine.getProperty("voices")
@@ -32,6 +32,7 @@ def change_lang(new_lang: str):
     if new_voice_id == "xd":
         print("language not found in your built-in synthesiser")
     else:
+        LANG = _LANG
         engine.setProperty("voice", new_voice_id)
 
 
@@ -58,6 +59,12 @@ def mów(s: str, lang="en", show=True):
 
 
 def zapisz(s: str, path_save: str, lang="en"):
+    """
+    save a audio file generated from polish text.
+    s - polish text to be speechised
+    path_save - path for the audio file to be saved at
+    lang - language for the synthesiser
+    """
     global LANG
     if lang != LANG:
         change_lang(lang)

@@ -167,7 +167,7 @@ franc = {
     r"e([^nm]+[ouie])": r"é\1",
     r"e([^u])": r"è\1",
     r"E": "e",
-    r"([tklp])\b": r"\1e",
+    r"([tklph])\b": r"\1e",
     r"([^cp])kh": "h",
     "ń": "gn",
 }
