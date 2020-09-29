@@ -73,6 +73,8 @@ An example for how well does the software work with approxima... _translation_ o
 
 There is a video showing how the `demo.py` file works (recorded in low quality by me and posted on youtube) [here](https://youtu.be/bHWxwoAm0OE).
 
+Also with version `0.1.0` the french mode has been introduced therefore there's another demo file `demo_fr.py`. A video of it being run is [here](https://youtu.be/ti8CjUXVVpo)
+
 
 ### dependencies
 
@@ -130,6 +132,8 @@ he good thing is it is actually easier to transcribe Polish into French than int
 
 
 ##### How to use the french mode?
+You must have the `pytdm` version `0.1.0` or higher installed. 
+
 just add the `lang="fr"` argument or simply `fr` when calling functions like `mów` or `tłumacz`. To set it back to english set `lang="en"`. 
 
 ```python
@@ -139,7 +143,7 @@ just add the `lang="fr"` argument or simply `fr` when calling functions like `m�
 >>> pytdm.mów("czuję, że będzie dziś dość średni dzień", "fr")
 czuję, że będzie dziś dość średni dzień
 ```
-And there is the function `pytdm.translacja.francyzuj` that works the same as `anglicyzuj` mentioned before but for french
+And there is the function `francyzuj` that works the same as `anglicyzuj` mentioned before but for french
 
 ---
 
