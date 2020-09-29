@@ -25,6 +25,9 @@ pip install pytdm
 ```
 and you can use it just like that!
 
+###### iOS
+for the iOS version see the [pythonista directory on github](https://github.com/test0wanie/PyTDM/blob/master/pythonista/README_iOS.md), do not use `pip` there.
+
 ### how it's made
 It's based on the `pyttsx3` package I've just mentioned. The thing is that contrary to what many English speaking people think (looking at u americans) Polish actually __is__ pronounceable for someone knowing English. 
 
