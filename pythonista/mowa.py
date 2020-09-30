@@ -22,9 +22,9 @@ def mów(s, lang="en", show=True):
         s.replace(".", ",").replace("!", ",").replace(
             ":", ",").replace("?", ",")
     )
+    langs = {"en": "en_US", "fr": "fr_FR"}
     if show:
         print(s)
-        langs = {"en": "en_US", "fr": "fr_FR"}
     if lang in langs.keys():
         translated = tłumacz(s_corrected.lower(), lang)
         say(translated, langs[lang])
