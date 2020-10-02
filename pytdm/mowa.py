@@ -5,30 +5,32 @@ import os
 
 # relative vs non relative import bs
 try:
-    from translacja import tłumacz
+    from translacja import tłumacz, langs
 except ModuleNotFoundError:
-    from .translacja import tłumacz
+    from .translacja import tłumacz, langs
 
 LANG = "en"
-langs = {"en": "en_US", "fr": "fr_FR"}
+
 engine = pyttsx3.init()
 
 
 def change_lang(new_lang: str):
     "change current synthesiser and translator language"
     global LANG
-    voices = ["en", "fr"]
-    if new_lang not in voices:
+    if new_lang not in langs.keys():
         raise NotImplementedError(
-            "Voice %s isn't among avalaible voices." % new_lang)
+            "Language '%s' not found among avalaible languages, which are:" % new_lang,
+            list(langs.keys())
+        )
     _LANG = new_lang
     new_lang = langs[new_lang]
     new_voice_id = "xd"
     vs = engine.getProperty("voices")
     for v in vs:
-        if v.languages[0] == new_lang:
-            new_voice_id = v.id
-            break
+        if v.languages:
+            if v.languages[0] == new_lang:
+                new_voice_id = v.id
+                break
     if new_voice_id == "xd":
         print("language not found in your built-in synthesiser")
     else:
@@ -60,7 +62,7 @@ def mów(s: str, lang="en", show=True):
 
 def zapisz(s: str, path_save: str, lang="en"):
     """
-    save a audio file generated from polish text.
+    save an audio file generated from polish text.
     s - polish text to be speechised
     path_save - path for the audio file to be saved at
     lang - language for the synthesiser

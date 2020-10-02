@@ -2,7 +2,7 @@
 from .translacja import repolonizuj, anglicyzuj, francyzuj
 from .mowa import mów, zapisz, tłumacz
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 # to make it non-polish-keyboard friendly:
 mow = mów

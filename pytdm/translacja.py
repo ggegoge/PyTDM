@@ -8,6 +8,7 @@ try:
 except:
     from .nums import num_to_speech
 
+langs = {"en": "en_US", "fr": "fr_FR"}
 
 # ~40 lines of regexp
 repolon = {
@@ -233,7 +234,14 @@ def francyzuj(s: str) -> str:
 def tłumacz(s: str, lang="en") -> str:
     """
     returns given polish text transcribed into english.
-    can also be called with tlumacz(s)
+    can also be called with tlumacz(s).
+    Specify the output language with `lang`
     """
+    if lang not in langs.keys():
+        raise NotImplementedError(
+            "Language '%s' not found among avalaible languages, which are:" % lang,
+            list(langs.keys())
+        )
+
     s = repolonizuj(s)
-    return anglicyzuj(s) if lang == "en" else francyzuj(s)
+    return {"en": anglicyzuj, "fr": francyzuj}[lang](s)
