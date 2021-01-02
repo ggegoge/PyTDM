@@ -1,4 +1,4 @@
-"""polish -> simplified polish -> english transcription"""
+"""polish -> simplified polish -> english/french transcription"""
 
 import re
 
@@ -14,7 +14,7 @@ langs = {"en": "en_US", "fr": "fr_FR"}
 repolon = {
     r"(\b[wz])(\s)": r"\1",  # lone letters
     "rz": "ż",  # upraszczam polski
-    r"([^pt])ch": r"\1h",  # ph i th nie mogą powstać
+    # r"([^pt])ch": r"\1h",  # ph i th nie mogą powstać
     "ó": "u",
     "ęł": "eł",
     "ął": "oł",
@@ -65,6 +65,7 @@ angl = {
     "ą": "om",  # ą in polish actually still works
     "\be\b": r"\bFF\b",
     r"\B[ji]i": "i",  # ji/ii nie umie rozroznic
+    r"([^pt])ch": r"\1h",  # ph i th nie mogą powstać
     "ch": "kh",  # niedobitki ch
     r"([fk])i(e)": r"\1\2",  # bez palatalizacji po nich
     # r'([fk])i(e)': r'\1i\2hh',
@@ -139,7 +140,7 @@ angl = {
 
 
 franc = {
-    "ch": "kh",
+    "ch": "r",
     "w": "v",
     r"e\b": "é",
     r"n\b": "ne",
@@ -237,7 +238,7 @@ def tłumacz(s: str, lang="en") -> str:
     can also be called with tlumacz(s).
     Specify the output language with `lang`
     """
-    if lang not in langs.keys():
+    if lang not in langs:
         raise NotImplementedError(
             "Language '%s' not found among avalaible languages, which are:" % lang,
             list(langs.keys())

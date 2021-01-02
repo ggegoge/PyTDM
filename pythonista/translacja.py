@@ -1,4 +1,4 @@
-"""polish -> simplified polish -> english transcription"""
+"""polish -> simplified polish -> english/french transcription"""
 
 import re
 
@@ -8,12 +8,13 @@ try:
 except:
     from .nums import num_to_speech
 
+langs = {"en": "en_US", "fr": "fr_FR"}
 
 # ~40 lines of regexp
 repolon = {
     r"(\b[wz])(\s)": r"\1",  # lone letters
     "rz": "ż",  # upraszczam polski
-    r"([^pt])ch": r"\1h",  # ph i th nie mogą powstać
+    # r"([^pt])ch": r"\1h",  # ph i th nie mogą powstać
     "ó": "u",
     "ęł": "eł",
     "ął": "oł",
@@ -64,6 +65,7 @@ angl = {
     "ą": "om",  # ą in polish actually still works
     "\be\b": r"\bFF\b",
     r"\B[ji]i": "i",  # ji/ii nie umie rozroznic
+    r"([^pt])ch": r"\1h",  # ph i th nie mogą powstać
     "ch": "kh",  # niedobitki ch
     r"([fk])i(e)": r"\1\2",  # bez palatalizacji po nich
     # r'([fk])i(e)': r'\1i\2hh',
@@ -138,7 +140,7 @@ angl = {
 
 
 franc = {
-    "ch": "kh",
+    "ch": "r",
     "w": "v",
     r"e\b": "é",
     r"n\b": "ne",
@@ -167,7 +169,7 @@ franc = {
     r"e([^nm]+[ouie])": r"é\1",
     r"e([^u])": r"è\1",
     r"E": "e",
-    r"([tklp])\b": r"\1e",
+    r"([tklph])\b": r"\1e",
     r"([^cp])kh": "h",
     "ń": "gn",
 }
@@ -233,7 +235,14 @@ def francyzuj(s: str) -> str:
 def tłumacz(s: str, lang="en") -> str:
     """
     returns given polish text transcribed into english.
-    can also be called with tlumacz(s)
+    can also be called with tlumacz(s).
+    Specify the output language with `lang`
     """
+    if lang not in langs:
+        raise NotImplementedError(
+            "Language '%s' not found among avalaible languages, which are:" % lang,
+            list(langs.keys())
+        )
+
     s = repolonizuj(s)
-    return anglicyzuj(s) if lang == "en" else francyzuj(s)
+    return {"en": anglicyzuj, "fr": francyzuj}[lang](s)
