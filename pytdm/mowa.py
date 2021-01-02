@@ -17,10 +17,10 @@ engine = pyttsx3.init()
 def change_lang(new_lang: str):
     "change current synthesiser and translator language"
     global LANG
-    if new_lang not in langs.keys():
+    if new_lang not in langs:
         raise NotImplementedError(
             "Language '%s' not found among avalaible languages, which are:" % new_lang,
-            list(langs.keys())
+            list(langs.keys()),
         )
     _LANG = new_lang
     new_lang = langs[new_lang]
@@ -62,9 +62,9 @@ def mów(s: str, lang="en", show=True):
 
 def zapisz(s: str, path_save: str, lang="en"):
     """
-    save an audio file generated from polish text.
+    tries to save an audio file generated from polish text.
     s - polish text to be speechised
-    path_save - path for the audio file to be saved at
+    path_save - file name
     lang - language for the synthesiser
     """
     global LANG
@@ -72,6 +72,13 @@ def zapisz(s: str, path_save: str, lang="en"):
         change_lang(lang)
     translated = tłumacz(s.lower(), LANG)
     path_save = os.path.join(os.getcwd(), path_save)
+    # ok well. it doesn't work properly for one simple
+    # reason - pyttsx3 seems to be breaking each time
+    # it tries to save another new file with the same engine
+    # idk why, it works for first zapisz, but not for more
+    # tried to fix that but with no luck
+    # seems like the problem is on pytttsx3's side
+
     print("Saving file to", path_save)
     engine.save_to_file(translated, path_save)
     engine.runAndWait()

@@ -25,7 +25,7 @@ def mów(s, lang="en", show=True):
     langs = {"en": "en_US", "fr": "fr_FR"}
     if show:
         print(s)
-    if lang in langs.keys():
+    if lang in langs:
         translated = tłumacz(s_corrected.lower(), lang)
         say(translated, langs[lang])
     else:
